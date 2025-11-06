@@ -29,6 +29,30 @@ class ResultController extends Controller
         ], 201);
     }
 
+    public function storeBulk(Request $request)
+    {
+        $request->validate([
+            'run_id' => 'required|uuid|exists:runs,id',
+            'results' => 'required|array',
+            'results.*.metrics' => 'required|array',
+            'results.*.timestamp' => 'nullable|string',
+        ]);
+
+        $bulk = [];
+        foreach ($request->results as $r) {
+            $bulk[] = [
+                'run_id' => $request->run_id,
+                'metrics' => json_encode($r['metrics']),
+                'created_at' => $r['timestamp'] ?? now(),
+            ];
+        }
+        Result::insert($bulk);
+
+        return response()->json(['message' => 'Bulk results stored successfully'], 201);
+    }
+
+
+
     /**
      * Devuelve los resultados de un run
      */

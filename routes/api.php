@@ -16,4 +16,5 @@ Route::post('/runs/start', [RunController::class, 'start']);
 Route::post('/runs/{id}/end', [RunController::class, 'end']);
 
 Route::post('/results', [ResultController::class, 'store']);
+Route::post('/results/bulk', [ResultController::class, 'storeBulk']);
 Route::get('/results/{run_id}', [ResultController::class, 'show']);

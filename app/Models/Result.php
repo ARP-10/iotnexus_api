@@ -14,6 +14,9 @@ class Result extends Model
         'metrics',
     ];
 
+    public $timestamps = false;
+
+
     protected $casts = [
         'metrics' => 'array', 
     ];

@@ -14,6 +14,9 @@ class Customer extends Model
         'company_vat'
     ];
 
+    public $timestamps = false;
+
+
     /**
      * Relación: un cliente puede tener muchos productos
      */

@@ -9,11 +9,15 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $table = 'products';
+
     protected $fillable = [
-        'customer_id',
         'code',
         'name'
     ];
+
+    public $timestamps = false;
+
 
     public function customer()
     {

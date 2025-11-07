@@ -14,6 +14,9 @@ class Run extends Model
     protected $keyType = 'string';       
     protected $fillable = ['machine_id', 'app_version'];
 
+    public $timestamps = false;
+
+
     protected static function boot()
     {
         parent::boot();

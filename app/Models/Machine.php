@@ -11,6 +11,9 @@ class Machine extends Model
 
     protected $fillable = ['customer_id', 'product_id', 'license_id', 'serial_number'];
 
+
+    public $timestamps = false;
+
     public function product()
     {
         return $this->belongsTo(Product::class);

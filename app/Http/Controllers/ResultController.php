@@ -42,7 +42,7 @@ class ResultController extends Controller
         foreach ($request->results as $r) {
             $bulk[] = [
                 'run_id' => $request->run_id,
-                'metrics' => json_encode($r['metrics']),
+                'metrics' => $r['metrics'],
                 'created_at' => $r['timestamp'] ?? now(),
             ];
         }

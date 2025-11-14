@@ -12,9 +12,13 @@ Route::get('/machines', [MachineController::class, 'index']);
 Route::post('/machines', [MachineController::class, 'store']);
 
 Route::get('/runs', [RunController::class, 'index']);
+
+// Empezar la run
 Route::post('/runs/start', [RunController::class, 'start']);
+// Finalizar la run
 Route::post('/runs/{id}/end', [RunController::class, 'end']);
 
 Route::post('/results', [ResultController::class, 'store']);
+// Resultados en conjunto
 Route::post('/results/bulk', [ResultController::class, 'storeBulk']);
 Route::get('/results/{run_id}', [ResultController::class, 'show']);

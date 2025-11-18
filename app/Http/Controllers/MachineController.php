@@ -24,4 +24,20 @@ class MachineController extends Controller
         $machine = Machine::create($validated);
         return response()->json($machine, 201);
     }
+
+    public function findBySerial($serial)
+    {
+        $machine = Machine::where('serial_number', $serial)->first();
+
+        if (!$machine) {
+            return response()->json(['error' => 'Machine not found'], 404);
+        }
+
+        return response()->json([
+            'machine_id' => $machine->id,
+            'serial_number' => $machine->serial_number,
+            'product_id' => $machine->product_id,
+        ], 200);
+    }
+
 }

@@ -10,6 +10,8 @@ Route::post('/products', [ProductController::class, 'store']);
 
 Route::get('/machines', [MachineController::class, 'index']);
 Route::post('/machines', [MachineController::class, 'store']);
+Route::get('/machines/by-serial/{serial}', [MachineController::class, 'findBySerial']);
+
 
 Route::get('/runs', [RunController::class, 'index']);
 

@@ -14,6 +14,8 @@ Route::get('/machines/by-serial/{serial}', [MachineController::class, 'findBySer
 
 
 Route::get('/runs', [RunController::class, 'index']);
+Route::delete('/runs/{id}', [RunController::class, 'destroy']);
+
 
 // Empezar la run
 Route::post('/runs/start', [RunController::class, 'start']);

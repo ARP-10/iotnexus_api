@@ -31,24 +31,37 @@ class ResultController extends Controller
 
     public function storeBulk(Request $request)
     {
-        $request->validate([
-            'run_id' => 'required|uuid|exists:runs,id',
+        $validated = $request->validate([
+            'run_id' => 'required|exists:runs,id',
             'results' => 'required|array',
             'results.*.metrics' => 'required|array',
             'results.*.timestamp' => 'nullable|string',
         ]);
 
         $bulk = [];
-        foreach ($request->results as $r) {
+
+        foreach ($validated['results'] as $r) {
+
+            // Convertir timestamp a formato compatible
+            $created = isset($r['timestamp'])
+                ? date('Y-m-d H:i:s', strtotime($r['timestamp']))
+                : now();
+
             $bulk[] = [
-                'run_id' => $request->run_id,
-                'metrics' => $r['metrics'],
-                'created_at' => $r['timestamp'] ?? now(),
+                'run_id'     => $validated['run_id'],
+                'metrics'    => json_encode($r['metrics'], JSON_UNESCAPED_UNICODE),
+                'created_at' => $created,
+                'updated_at' => $created,
             ];
         }
+
+        // Insert masivo
         Result::insert($bulk);
 
-        return response()->json(['message' => 'Bulk results stored successfully'], 201);
+        return response()->json([
+            'message' => 'Bulk results stored successfully',
+            'saved'   => count($bulk)
+        ], 201);
     }
 
 

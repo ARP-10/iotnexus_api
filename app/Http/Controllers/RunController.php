@@ -47,4 +47,19 @@ class RunController extends Controller
     {
         return Run::with('machine')->latest()->get();
     }
+
+    public function destroy($id)
+{
+    $run = Run::findOrFail($id);
+
+    // Si hay results asociados, impedir borrado (opcional)
+    if ($run->results()->count() > 0) {
+        return response()->json(['error' => 'Run has results, cannot delete'], 400);
+    }
+
+    $run->delete();
+
+    return response()->json(['message' => 'Run deleted']);
+}
+
 }

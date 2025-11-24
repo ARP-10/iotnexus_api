@@ -11,7 +11,7 @@ use App\Models\Machine;
 
 class AnomaliesWidget extends StatsOverviewWidget
 {
-    protected ?string $heading = 'Anomalías detectadas';
+    protected ?string $heading = 'Anomalies detected';
 
     protected int|string|array $columnSpan = 'full';
 
@@ -63,26 +63,26 @@ class AnomaliesWidget extends StatsOverviewWidget
         $iconMaquinas = $maquinasSinProducto > 0 ? 'heroicon-o-exclamation-circle' : 'heroicon-o-check-circle';
 
         return [
-            Stat::make('Runs sin resultados', $runsSinResultados)
-                ->description($runsSinResultados > 0 ? 'Se detectaron problemas' : 'Todo correcto')
+            Stat::make('Runs without results', $runsSinResultados)
+                ->description($runsSinResultados > 0 ? 'Problems detected' : 'Ok')
                 ->descriptionIcon($iconRuns)
                 ->icon('heroicon-o-document-magnifying-glass')
                 ->color($runsSinResultados > 0 ? 'danger' : 'success'),
 
-            Stat::make('Resultados inválidos', $resultadosInvalidos)
-                ->description($resultadosInvalidos > 0 ? 'Valores negativos detectados' : 'Sin problemas')
+            Stat::make('Invalid results', $resultadosInvalidos)
+                ->description($resultadosInvalidos > 0 ? 'Negative values ​​detected' : 'Ok')
                 ->descriptionIcon($iconInvalidos)
                 ->icon('heroicon-o-exclamation-triangle')
                 ->color($resultadosInvalidos > 0 ? 'danger' : 'success'),
 
-            Stat::make('Runs con 1 medición', $runsConUnaMedicion)
-                ->description($runsConUnaMedicion > 0 ? 'Mediciones incompletas' : 'Todo en orden')
+            Stat::make('Runs with 1 measurement', $runsConUnaMedicion)
+                ->description($runsConUnaMedicion > 0 ? 'Incomplete measurements' : 'Ok')
                 ->descriptionIcon($iconUnaMedicion)
                 ->icon('heroicon-o-arrow-path')
                 ->color($runsConUnaMedicion > 0 ? 'danger' : 'success'),
 
-            Stat::make('Máquinas sin producto', $maquinasSinProducto)
-                ->description($maquinasSinProducto > 0 ? 'Asignación pendiente' : 'Correcto')
+            Stat::make('Machines without product', $maquinasSinProducto)
+                ->description($maquinasSinProducto > 0 ? 'Pending assignment' : 'Ok')
                 ->descriptionIcon($iconMaquinas)
                 ->icon('heroicon-o-cube')
                 ->color($maquinasSinProducto > 0 ? 'danger' : 'success'),

@@ -15,23 +15,23 @@ class StatsOverview extends StatsOverviewWidget
     protected function getStats(): array
     {
         return [
-            Stat::make('Productos', Product::count())
-                ->description('Registrados en total')
+            Stat::make('Products', Product::count())
+                ->description('Total registered')
                 ->descriptionIcon('heroicon-o-cube')
                 ->color('info'),
 
-            Stat::make('Máquinas', Machine::count())
-                ->description('Activas en el sistema')
+            Stat::make('Machines', Machine::count())
+                ->description('Active in the system')
                 ->descriptionIcon('heroicon-o-cog')
                 ->color('warning'),
 
             Stat::make('Runs', Run::count())
-                ->description('Ejecuciones registradas')
+                ->description('Recorded executions')
                 ->descriptionIcon('heroicon-o-play-circle')
                 ->color('success'),
 
-            Stat::make('Resultados', Result::count())
-                ->description('Datos almacenados')
+            Stat::make('Results', Result::count())
+                ->description('Stored data')
                 ->descriptionIcon('heroicon-o-chart-bar')
                 ->color('primary'),
         ];

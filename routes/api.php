@@ -4,6 +4,7 @@ use App\Http\Controllers\RunController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\MachineController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SoftwareVersionController;
 
 Route::get('/products', [ProductController::class, 'index']);
 Route::post('/products', [ProductController::class, 'store']);
@@ -26,3 +27,5 @@ Route::post('/results', [ResultController::class, 'store']);
 // Resultados en conjunto
 Route::post('/results/bulk', [ResultController::class, 'storeBulk']);
 Route::get('/results/{run_id}', [ResultController::class, 'show']);
+
+Route::get('/software/latest', [SoftwareVersionController::class, 'latest']);

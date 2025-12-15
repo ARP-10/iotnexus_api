@@ -26,8 +26,9 @@ class Machine extends Model
 
     public function softwareVersion()
     {
-        return $this->belongsTo(SoftwareVersion::class);
+        return $this->belongsTo(\App\Models\SoftwareVersion::class, 'software_version_id');
     }
+
 
 
 }

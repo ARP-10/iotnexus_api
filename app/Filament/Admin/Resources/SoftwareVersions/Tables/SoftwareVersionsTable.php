@@ -15,16 +15,21 @@ class SoftwareVersionsTable
     {
         return $table
             ->columns([
-                TextColumn::make('serial_number')
-                    ->label('Serial number')
-                    ->searchable()
-                    ->sortable(),
                 TextColumn::make('app_name')
                     ->searchable(),
                 TextColumn::make('version')
                     ->searchable(),
+                TextColumn::make('serial_number')
+                    ->label('Serial number')
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('download_url')
                     ->searchable(),
+                TextColumn::make('changelog')
+                    ->label('Changelog')
+                    ->limit(60)
+                    ->wrap()
+                    ->toggleable(),
                 IconColumn::make('mandatory')
                     ->boolean(),
                 TextColumn::make('created_at')

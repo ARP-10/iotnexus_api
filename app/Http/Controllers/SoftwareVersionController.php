@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SoftwareVersion;
+use App\Models\Machine;
 use Illuminate\Http\Request;
 
 class SoftwareVersionController extends Controller
@@ -15,14 +15,19 @@ class SoftwareVersionController extends Controller
             return response()->json(['message' => 'serial_number is required'], 400);
         }
 
-        // Buscar versiones asociadas al serial
-        $version = SoftwareVersion::where('serial_number', $serial)
-            ->orderByDesc('created_at')
+        $machine = Machine::with('softwareVersion')
+            ->where('serial_number', $serial)
             ->first();
 
-        if (! $version) {
+        if (! $machine) {
+            return response()->json(['message' => 'Machine not found'], 404);
+        }
+
+        if (! $machine->softwareVersion) {
             return response()->json(['message' => 'No version found'], 404);
         }
+
+        $version = $machine->softwareVersion;
 
         return response()->json([
             'version'      => $version->version,

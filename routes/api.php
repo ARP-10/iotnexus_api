@@ -1,13 +1,13 @@
 <?php
 
+use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\RunController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\MachineController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SoftwareVersionController;
 
-Route::get('/products', [ProductController::class, 'index']);
-Route::post('/products', [ProductController::class, 'store']);
+Route::get('/equipment', [EquipmentController::class, 'index']);
+Route::post('/equipment', [EquipmentController::class, 'store']);
 
 Route::get('/machines', [MachineController::class, 'index']);
 Route::post('/machines', [MachineController::class, 'store']);

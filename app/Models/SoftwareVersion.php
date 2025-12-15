@@ -10,7 +10,6 @@ class SoftwareVersion extends Model
 
     protected $fillable = [
         'serial_number',
-        'machine_version',
         'app_name',
         'version',
         'download_url',

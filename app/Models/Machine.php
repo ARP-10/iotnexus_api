@@ -9,19 +9,25 @@ class Machine extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['customer_id', 'product_id', 'license_id', 'serial_number', 'machine_version'];
+    protected $fillable = ['customer_id', 'equipment_id', 'license_id', 'serial_number', 'equipment_version', 'software_version_id'];
 
 
     public $timestamps = false;
 
-    public function product()
+    public function equipment()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Equipment::class);
     }
 
     public function runs()
     {
         return $this->hasMany(Run::class);
     }
+
+    public function softwareVersion()
+    {
+        return $this->belongsTo(SoftwareVersion::class);
+    }
+
 
 }

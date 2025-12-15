@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Admin\Resources\Products\Tables;
+namespace App\Filament\Admin\Resources\Equipment\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
@@ -9,7 +9,7 @@ use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class ProductsTable
+class EquipmentTable
 {
     public static function configure(Table $table): Table
     {

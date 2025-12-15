@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Filament\Admin\Resources\Products\Schemas;
+namespace App\Filament\Admin\Resources\Equipment\Schemas;
 
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Schema;
 
-class ProductInfolist
+class EquipmentInfolist
 {
     public static function configure(Schema $schema): Schema
     {

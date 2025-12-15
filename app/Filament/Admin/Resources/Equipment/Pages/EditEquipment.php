@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Filament\Admin\Resources\Products\Pages;
+namespace App\Filament\Admin\Resources\Equipment\Pages;
 
-use App\Filament\Admin\Resources\Products\ProductResource;
+use App\Filament\Admin\Resources\Equipment\EquipmentResource;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Resources\Pages\EditRecord;
 
-class EditProduct extends EditRecord
+class EditEquipment extends EditRecord
 {
-    protected static string $resource = ProductResource::class;
+    protected static string $resource = EquipmentResource::class;
 
     protected function getHeaderActions(): array
     {

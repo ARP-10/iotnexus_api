@@ -33,7 +33,7 @@ class RunController extends Controller
             if (!$machine) {
                 $machine = Machine::create([
                     'serial_number' => $validated['serial_number'],
-                    'product_id' => null,
+                    'equipment_id' => null,
                     'customer_id' => null,
                     'license_id' => null,
                 ]);

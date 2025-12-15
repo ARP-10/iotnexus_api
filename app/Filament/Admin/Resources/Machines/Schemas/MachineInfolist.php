@@ -15,8 +15,8 @@ class MachineInfolist
             ->components([
                 TextEntry::make('customer_id')
                     ->numeric(),
-                Infolists\Components\TextEntry::make('product.name')
-                    ->label('Product'),
+                Infolists\Components\TextEntry::make('equipment.name')
+                    ->label('Equipment'),
 
                 TextEntry::make('license_id')
                     ->numeric(),

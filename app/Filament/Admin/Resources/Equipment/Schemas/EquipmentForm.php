@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Filament\Admin\Resources\Products\Schemas;
+namespace App\Filament\Admin\Resources\Equipment\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
-class ProductForm
+class EquipmentForm
 {
     public static function configure(Schema $schema): Schema
     {

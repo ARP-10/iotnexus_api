@@ -18,11 +18,11 @@ class Customer extends Model
 
 
     /**
-     * Relación: un cliente puede tener muchos productos
+     * Relación: un cliente puede tener muchos equipos
      */
-    public function products()
+    public function equipment()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Equipment::class);
     }
 
     /**

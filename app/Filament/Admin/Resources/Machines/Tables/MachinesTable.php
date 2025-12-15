@@ -18,16 +18,30 @@ class MachinesTable
         return $table
             ->columns([
 
-                Tables\Columns\TextColumn::make('product.name')
-                    ->label('Product')
+                Tables\Columns\TextColumn::make('equipment.name')
+                    ->label('Equipment')
                     ->sortable()
                     ->searchable(),
-                TextColumn::make('version_maquina')
-                    ->label('Machine version')
-                    ->searchable()
-                    ->sortable(),
-                TextColumn::make('serial_number')
+                TextColumn::make('equipment_version')
+                    ->label('Eq. version')
+                    ->sortable()
                     ->searchable(),
+
+                TextColumn::make('serial_number')
+                    ->label('Serial number')
+                    ->searchable(),
+
+                TextColumn::make('softwareVersion.version')
+                    ->label('Software version')
+                    ->formatStateUsing(function ($state, $record) {
+                        $sv = $record->softwareVersion;
+                        if (!$sv)
+                            return '—';
+                        return trim(($sv->app_name ?? '') . ' ' . ($sv->version ?? ''));
+                    })
+                    ->sortable()
+                    ->searchable(),
+
                 TextColumn::make('license_id')
                     ->numeric()
                     ->sortable(),

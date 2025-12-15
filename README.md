@@ -38,7 +38,7 @@ Esta API permite registrar:
 - **customers**
   - id, name, email, company_vat
 
-- **products**
+- **equipment**
   - id, customer_id, code, name
 
 - **machines**

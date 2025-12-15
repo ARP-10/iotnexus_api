@@ -9,26 +9,30 @@ class MachineController extends Controller
 {
     public function index()
     {
-        return Machine::with('product')->get();
+        return Machine::with(['equipment', 'softwareVersion'])->get();
     }
 
     public function store(Request $request)
     {
         $validated = $request->validate([
             'customer_id' => 'nullable|integer',
-            'product_id' => 'required|exists:products,id',
+            'equipment_id' => 'required|exists:equipment,id',
+            'equipment_version' => 'required|string|max:20',
             'serial_number' => 'required|string|unique:machines,serial_number',
             'license_id' => 'nullable|integer',
-            'machine_version' => 'nullable|string|max:50',
+            'software_version_id' => 'nullable|exists:software_versions,id',
         ]);
 
         $machine = Machine::create($validated);
+
         return response()->json($machine, 201);
     }
 
     public function findBySerial($serial)
     {
-        $machine = Machine::where('serial_number', $serial)->first();
+        $machine = Machine::with(['equipment', 'softwareVersion'])
+            ->where('serial_number', $serial)
+            ->first();
 
         if (!$machine) {
             return response()->json(['error' => 'Machine not found'], 404);
@@ -37,8 +41,13 @@ class MachineController extends Controller
         return response()->json([
             'machine_id' => $machine->id,
             'serial_number' => $machine->serial_number,
-            'product_id' => $machine->product_id,
+            'equipment_id' => $machine->equipment_id,
+            'equipment_version' => $machine->equipment_version,
+            'software_version_id' => $machine->software_version_id,
+            'software' => $machine->softwareVersion ? [
+                'app_name' => $machine->softwareVersion->app_name,
+                'version' => $machine->softwareVersion->version,
+            ] : null,
         ], 200);
     }
-
 }

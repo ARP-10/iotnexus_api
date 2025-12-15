@@ -4,7 +4,7 @@ namespace App\Filament\Admin\Widgets;
 
 use Filament\Widgets\StatsOverviewWidget\Stat;
 use Filament\Widgets\StatsOverviewWidget;
-use App\Models\Product;
+use App\Models\Equipment;
 use App\Models\Machine;
 use App\Models\Run;
 use App\Models\Result;
@@ -15,7 +15,7 @@ class StatsOverview extends StatsOverviewWidget
     protected function getStats(): array
     {
         return [
-            Stat::make('Products', Product::count())
+            Stat::make('Equipment', Equipment::count())
                 ->description('Total registered')
                 ->descriptionIcon('heroicon-o-cube')
                 ->color('info'),

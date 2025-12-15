@@ -15,8 +15,13 @@ class SoftwareVersionsTable
     {
         return $table
             ->columns([
-                TextColumn::make('machine_id')
-                    ->numeric()
+                TextColumn::make('machine_version')
+                    ->label('Machine version')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('serial_number')
+                    ->label('Serial number')
+                    ->searchable()
                     ->sortable(),
                 TextColumn::make('app_name')
                     ->searchable(),

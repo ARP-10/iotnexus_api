@@ -19,6 +19,7 @@ class MachineController extends Controller
             'product_id' => 'required|exists:products,id',
             'serial_number' => 'required|string|unique:machines,serial_number',
             'license_id' => 'nullable|integer',
+            'machine_version' => 'nullable|string|max:50',
         ]);
 
         $machine = Machine::create($validated);

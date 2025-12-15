@@ -17,19 +17,23 @@ class MachinesTable
     {
         return $table
             ->columns([
-                TextColumn::make('customer_id')
-                    ->numeric()
-                    ->sortable(),
+
                 Tables\Columns\TextColumn::make('product.name')
                     ->label('Product')
                     ->sortable()
                     ->searchable(),
-
-                TextColumn::make('license_id')
-                    ->numeric()
+                TextColumn::make('version_maquina')
+                    ->label('Machine version')
+                    ->searchable()
                     ->sortable(),
                 TextColumn::make('serial_number')
                     ->searchable(),
+                TextColumn::make('license_id')
+                    ->numeric()
+                    ->sortable(),
+                TextColumn::make('customer_id')
+                    ->numeric()
+                    ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

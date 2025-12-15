@@ -13,9 +13,12 @@ class SoftwareVersionForm
     {
         return $schema
             ->components([
-                TextInput::make('machine_id')
-                    ->required()
-                    ->numeric(),
+                TextInput::make('machine_version')
+                    ->label('Machine version')
+                    ->required(),   
+                TextInput::make('serial_number')
+                    ->label('Serial number')
+                    ->required(),
                 TextInput::make('app_name')
                     ->required()
                     ->default('IT032_PC'),

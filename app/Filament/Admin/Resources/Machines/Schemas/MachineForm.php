@@ -21,7 +21,9 @@ class MachineForm
                     ->label('Product')
                     ->searchable()
                     ->required(),
-
+                TextInput::make('machine_version')
+                    ->label('Machine version')
+                    ->required(), 
                 TextInput::make('license_id')
                     ->numeric()
                     ->default(null),

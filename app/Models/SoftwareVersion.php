@@ -7,17 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class SoftwareVersion extends Model
 {
     const UPDATED_AT = null;
+
     protected $fillable = [
-        'machine_id', 
+        'serial_number',
+        'machine_version',
         'app_name',
         'version',
         'download_url',
         'changelog',
         'mandatory',
     ];
-
-    public function machine()
-    {
-        return $this->belongsTo(Machine::class);
-    }
 }

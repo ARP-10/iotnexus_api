@@ -9,22 +9,16 @@ class SoftwareVersionController extends Controller
 {
     public function latest(Request $request)
     {
-        $machineId = $request->get('machine_id');
+        $serial = $request->get('serial_number');
 
-        $query = SoftwareVersion::query();
-
-        if ($machineId) {
-            // solo versiones específicas para esa máquina
-            $query->where('machine_id', $machineId);
-        }
-        
-        $query = SoftwareVersion::where('app_name', $appName);
-
-        if ($machineId) {
-            $query->where('machine_id', $machineId);
+        if (! $serial) {
+            return response()->json(['message' => 'serial_number is required'], 400);
         }
 
-        $version = $query->orderByDesc('created_at')->first();
+        // Buscar versiones asociadas al serial
+        $version = SoftwareVersion::where('serial_number', $serial)
+            ->orderByDesc('created_at')
+            ->first();
 
         if (! $version) {
             return response()->json(['message' => 'No version found'], 404);
@@ -37,5 +31,4 @@ class SoftwareVersionController extends Controller
             'changelog'    => $version->changelog,
         ]);
     }
-
 }

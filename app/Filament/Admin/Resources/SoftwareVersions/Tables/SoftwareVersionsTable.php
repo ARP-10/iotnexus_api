@@ -8,6 +8,7 @@ use Filament\Actions\EditAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Support\HtmlString;
 
 class SoftwareVersionsTable
 {
@@ -27,9 +28,24 @@ class SoftwareVersionsTable
                     ->searchable(),
                 TextColumn::make('changelog')
                     ->label('Changelog')
-                    ->limit(60)
+                    ->formatStateUsing(function ($state): HtmlString {
+                        if (!$state)
+                            return new HtmlString('-');
+
+                        $data = is_array($state) ? $state : json_decode($state, true);
+
+                        $out = [];
+                        if (!empty($data['es']))
+                            $out[] = "es: {$data['es']}";
+                        if (!empty($data['en']))
+                            $out[] = "en: {$data['en']}";
+
+                        return new HtmlString(nl2br(e(implode("\n", $out ?: ['-']))));
+                    })
+                    ->html()
                     ->wrap()
                     ->toggleable(),
+
                 IconColumn::make('mandatory')
                     ->boolean(),
                 TextColumn::make('created_at')

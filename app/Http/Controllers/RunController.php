@@ -35,7 +35,7 @@ class RunController extends Controller
                     'serial_number' => $validated['serial_number'],
                     'equipment_id' => null,
                     'customer_id' => null,
-                    'license_id' => null,
+                    'license_code' => null,
                 ]);
             }
         }

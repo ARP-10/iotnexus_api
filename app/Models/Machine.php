@@ -9,7 +9,7 @@ class Machine extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['customer_id', 'equipment_id', 'license_id', 'serial_number', 'equipment_version', 'software_version_id'];
+    protected $fillable = ['customer_id', 'equipment_id', 'license_code', 'serial_number', 'equipment_version', 'software_version_id'];
 
 
     public $timestamps = false;

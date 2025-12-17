@@ -27,3 +27,5 @@ Route::post('/results/bulk', [ResultController::class, 'storeBulk']);
 Route::get('/results/{run_id}', [ResultController::class, 'show']);
 
 Route::get('/software/latest', [SoftwareVersionController::class, 'latest']);
+
+Route::post('/machines/{serial}/license', [MachineController::class, 'storeLicense']);

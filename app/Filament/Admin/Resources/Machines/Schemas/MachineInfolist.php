@@ -18,7 +18,7 @@ class MachineInfolist
                 Infolists\Components\TextEntry::make('equipment.name')
                     ->label('Equipment'),
 
-                TextEntry::make('license_id')
+                TextEntry::make('license_code')
                     ->numeric(),
                 TextEntry::make('serial_number'),
                 TextEntry::make('created_at')

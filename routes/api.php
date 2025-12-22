@@ -5,6 +5,7 @@ use App\Http\Controllers\RunController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\MachineController;
 use App\Http\Controllers\SoftwareVersionController;
+use App\Http\Controllers\LicenseController;
 
 Route::get('/equipment', [EquipmentController::class, 'index']);
 Route::post('/equipment', [EquipmentController::class, 'store']);
@@ -28,4 +29,8 @@ Route::get('/results/{run_id}', [ResultController::class, 'show']);
 
 Route::get('/software/latest', [SoftwareVersionController::class, 'latest']);
 
-Route::post('/machines/{serial}/license', [MachineController::class, 'storeLicense']);
+// TODO: Borrar esta ruta si no se usa
+//Route::post('/machines/{serial}/license', [MachineController::class, 'storeLicense']);
+
+Route::apiResource('licenses', LicenseController::class);
+Route::post('/machines/{serial}/license', [LicenseController::class, 'storeBySerial']);

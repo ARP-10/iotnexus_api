@@ -42,9 +42,6 @@ class MachinesTable
                     ->sortable()
                     ->searchable(),
 
-                TextColumn::make('license_code')
-                    ->numeric()
-                    ->sortable(),
                 TextColumn::make('customer_id')
                     ->numeric()
                     ->sortable(),

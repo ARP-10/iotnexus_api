@@ -35,9 +35,6 @@ class MachineForm
                 ->preload()
                 ->nullable(),
 
-            TextInput::make('license_code')
-                ->numeric()
-                ->default(null),
 
             TextInput::make('customer_id')
                 ->numeric()

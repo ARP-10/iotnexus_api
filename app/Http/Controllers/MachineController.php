@@ -19,7 +19,6 @@ class MachineController extends Controller
             'equipment_id' => 'required|exists:equipment,id',
             'equipment_version' => 'required|string|max:20',
             'serial_number' => 'required|string|unique:machines,serial_number',
-            'license_code' => 'nullable|integer',
             'software_version_id' => 'nullable|exists:software_versions,id',
         ]);
 
@@ -48,40 +47,6 @@ class MachineController extends Controller
                 'app_name' => $machine->softwareVersion->app_name,
                 'version' => $machine->softwareVersion->version,
             ] : null,
-        ], 200);
-    }
-
-    public function storeLicense(Request $request, $serial)
-    {
-        $validated = $request->validate([
-            'license_code' => 'required|string|max:255',
-        ]);
-
-        $machine = Machine::where('serial_number', $serial)->first();
-
-        // 1️⃣ No existe el número de serie
-        if (!$machine) {
-            return response()->json([
-                'error' => 'Machine not found'
-            ], 404);
-        }
-
-        // 2️⃣ Ya tiene licencia
-        if (!empty($machine->license_code)) {
-            return response()->json([
-                'error' => 'License already generated for this machine',
-                'license_code' => $machine->license_code,
-            ], 409);
-        }
-
-        // 3️⃣ Guardar licencia
-        $machine->license_code = $validated['license_code'];
-        $machine->save();
-
-        return response()->json([
-            'message' => 'License stored successfully',
-            'serial_number' => $machine->serial_number,
-            'license_code' => $machine->license_code,
         ], 200);
     }
 

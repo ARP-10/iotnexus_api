@@ -2,37 +2,39 @@
 
 namespace App\Filament\Admin\Widgets;
 
-use Filament\Widgets\StatsOverviewWidget\Stat;
 use Filament\Widgets\StatsOverviewWidget;
+use Filament\Widgets\StatsOverviewWidget\Stat;
 use App\Models\Equipment;
 use App\Models\Machine;
 use App\Models\Run;
 use App\Models\Result;
+use Filament\Support\Icons\Heroicon;
 
 class StatsOverview extends StatsOverviewWidget
 {
     protected static ?int $sort = 10;
+
     protected function getStats(): array
     {
         return [
             Stat::make('Equipment', Equipment::count())
+                ->icon(Heroicon::OutlinedWrenchScrewdriver)
                 ->description('Total registered')
-                ->descriptionIcon('heroicon-o-cube')
                 ->color('info'),
 
             Stat::make('Machines', Machine::count())
+                ->icon(Heroicon::OutlinedCog6Tooth)
                 ->description('Active in the system')
-                ->descriptionIcon('heroicon-o-cog')
                 ->color('warning'),
 
             Stat::make('Runs', Run::count())
+                ->icon(Heroicon::OutlinedPlay)
                 ->description('Recorded executions')
-                ->descriptionIcon('heroicon-o-play-circle')
                 ->color('success'),
 
             Stat::make('Results', Result::count())
+                ->icon(Heroicon::OutlinedChartBar)
                 ->description('Stored data')
-                ->descriptionIcon('heroicon-o-chart-bar')
                 ->color('primary'),
         ];
     }

@@ -16,9 +16,11 @@ use Filament\Tables\Table;
 
 class LicenseResource extends Resource
 {
+    protected static ?int $navigationSort = 40;
+
     protected static ?string $model = License::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedKey;
 
     public static function form(Schema $schema): Schema
     {

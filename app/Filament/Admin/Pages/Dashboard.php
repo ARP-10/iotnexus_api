@@ -8,6 +8,8 @@ use App\Filament\Admin\Widgets\RunsChart;
 
 class Dashboard extends BaseDashboard
 {
+    protected static ?int $navigationSort = 1;
+
     public function getWidgets(): array
     {
         return [

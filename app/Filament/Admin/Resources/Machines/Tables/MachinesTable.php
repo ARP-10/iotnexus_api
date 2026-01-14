@@ -18,49 +18,50 @@ class MachinesTable
         return $table
             ->columns([
 
-                Tables\Columns\TextColumn::make('equipment.name')
-                    ->label('Equipment')
-                    ->sortable()
-                    ->searchable(),
-                TextColumn::make('equipment_version')
-                    ->label('Eq. version')
-                    ->sortable()
-                    ->searchable(),
+                    Tables\Columns\TextColumn::make('equipment.name')
+                        ->label('Equipment')
+                        ->sortable()
+                        ->searchable(),
+                    TextColumn::make('equipment_version')
+                        ->label('Eq. version')
+                        ->sortable()
+                        ->searchable(),
 
-                TextColumn::make('serial_number')
-                    ->label('Serial number')
-                    ->searchable(),
+                    TextColumn::make('serial_number')
+                        ->label('Serial number')
+                        ->searchable(),
 
-                TextColumn::make('softwareVersion.version')
-                    ->label('Software version')
-                    ->formatStateUsing(function ($state, $record) {
-                        $sv = $record->softwareVersion;
-                        if (!$sv)
-                            return '—';
-                        return trim(($sv->app_name ?? '') . ' ' . ($sv->version ?? ''));
-                    })
-                    ->sortable()
-                    ->searchable(),
+                    TextColumn::make('softwareVersion.version')
+                        ->label('Software version')
+                        ->formatStateUsing(function ($state, $record) {
+                            $sv = $record->softwareVersion;
+                            if (!$sv)
+                                return '—';
+                            return trim(($sv->app_name ?? '') . ' ' . ($sv->version ?? ''));
+                        })
+                        ->sortable()
+                        ->searchable(),
 
-                TextColumn::make('customer_id')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-            ])
+                    TextColumn::make('customer.name')
+                        ->label('Customer')
+                        ->sortable()
+                        ->searchable(),
+                    TextColumn::make('created_at')
+                        ->dateTime()
+                        ->sortable()
+                        ->toggleable(isToggledHiddenByDefault: true),
+                ])
             ->filters([
-                //
-            ])
+                    //
+                ])
             ->recordActions([
-                ViewAction::make(),
-                EditAction::make(),
-            ])
+                    ViewAction::make(),
+                    EditAction::make(),
+                ])
             ->toolbarActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                ]),
-            ]);
+                    BulkActionGroup::make([
+                        DeleteBulkAction::make(),
+                    ]),
+                ]);
     }
 }

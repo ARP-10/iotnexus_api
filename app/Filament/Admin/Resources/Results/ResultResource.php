@@ -18,9 +18,11 @@ use Filament\Tables\Table;
 
 class ResultResource extends Resource
 {
+    protected static ?int $navigationSort = 60;
+
     protected static ?string $model = Result::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedPresentationChartLine;
 
     protected static ?string $recordTitleAttribute = 'run_id';
 

@@ -36,9 +36,12 @@ class MachineForm
                 ->nullable(),
 
 
-            TextInput::make('customer_id')
-                ->numeric()
-                ->default(null),
+            Select::make('customer_id')
+                ->relationship('customer', 'name')
+                ->searchable()
+                ->preload()
+                ->nullable(),
+
         ]);
     }
 }

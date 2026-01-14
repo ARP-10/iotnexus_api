@@ -16,9 +16,11 @@ use Filament\Tables\Table;
 
 class SoftwareVersionResource extends Resource
 {
+    protected static ?int $navigationSort = 70;
+
     protected static ?string $model = SoftwareVersion::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedPuzzlePiece;
 
     protected static ?string $recordTitleAttribute = 'version';
 

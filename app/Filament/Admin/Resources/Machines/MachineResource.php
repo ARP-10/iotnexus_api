@@ -14,14 +14,17 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use BackedEnum;
 
 class MachineResource extends Resource
 {
+    protected static ?int $navigationSort = 30;
+
     /** ✔ Filament 4: model debe ser STATIC */
     protected static ?string $model = Machine::class;
 
     /** ✔ Filament 4: icons usan enums */
-    protected static string|\BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedCog6Tooth;
 
     protected static ?string $recordTitleAttribute = 'serial_number';
 

@@ -16,10 +16,6 @@ class CustomersForm
                     ->required()
                     ->maxLength(255),
 
-                TextInput::make('company_vat')
-                    ->label('Company VAT')
-                    ->maxLength(255)
-                    ->nullable(),
             ]);
     }
 }

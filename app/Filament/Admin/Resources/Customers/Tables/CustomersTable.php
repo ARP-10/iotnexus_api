@@ -17,12 +17,7 @@ class CustomersTable
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->sortable(),
-
-                Tables\Columns\TextColumn::make('company_vat')
-                    ->label('Company VAT')
-                    ->searchable()
-                    ->sortable(),
-
+                    
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable(),

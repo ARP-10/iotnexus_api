@@ -5,6 +5,7 @@ namespace App\Filament\Admin\Pages;
 use Filament\Pages\Dashboard as BaseDashboard;
 use App\Filament\Admin\Widgets\StatsOverview;
 use App\Filament\Admin\Widgets\RunsChart;
+use App\Filament\Admin\Widgets\DashboardLicensesStats;
 
 class Dashboard extends BaseDashboard
 {
@@ -15,6 +16,7 @@ class Dashboard extends BaseDashboard
         return [
             StatsOverview::class,   
             RunsChart::class,
+            DashboardLicensesStats::class,
         ];
     }
 }
